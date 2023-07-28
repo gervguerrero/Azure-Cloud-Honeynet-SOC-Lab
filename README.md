@@ -102,9 +102,14 @@ During the Containment, Eradication and Recovery Phase of the incident lifecycle
 
 - **Operating System Firewalls** - I configured each VM’s respective Operating System Firewall to only accept inbound remote logins from authorized IP addresses.
 
-Windows 10: Windows Firewall 
+   Windows 10: Windows Firewall 
 
-Ubuntu: UFW Firewall 
+   Ubuntu: UFW Firewall 
+
+- **Private Endpoints** - I configured public access to disabled for Azure Key Vault and Blob Storage. Private endpoint access was configured to only allow access to these resources from within the virtual network, and deny access from public IP space.
+
+
+
 
 ## Attack Maps Before Hardening / Security Controls
 ![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
