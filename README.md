@@ -87,6 +87,7 @@ No Azure firewall was configured for the network, a Network Service Group (NSG) 
 
 To see a detailed process on following the Incident Response Process using Microsoft Sentinel covering NIST 800-61 (Incident Management Lifecycle) for this project, Click Here (PLACEHOLDER)
 
+</br>
 
 
 ## Architecture After Hardening / Security Controls
@@ -108,8 +109,8 @@ During the Containment, Eradication and Recovery Phase of the incident lifecycle
 
 - **Private Endpoints** - I configured public access to disabled for Azure Key Vault and Blob Storage. Private endpoint access was configured to only allow access to these resources from within the virtual network, and deny access from public IP space.
 
-
-
+</br>
+</br>
 
 ## Attack Maps Before Hardening / Security Controls
 
@@ -135,8 +136,14 @@ This map above shows the attempts to login to the SQL database application in th
 
 This map above shows the malicious network traffic flow passing our Open Network Security Group Rules (NSG)  and where they originate from. (Measured by AzureNetworkAnalytics_CL logs.)
 
+</br>
+
+## Attack Maps After Hardening / Security Controls
+
+```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.```
 
 
+</br>
 
 
 ## Metrics Before Hardening / Security Controls
@@ -152,12 +159,12 @@ Stop Time 2023-07-20 19:39:01 Z
 | SecurityEvent (Windows VM)                            | 36291
 | Syslog (Ubuntu VM)                                    | 16973
 | SecurityAlert (Microsoft Defender for Cloud)          | 12
-| SecurityIncident (Sentinel Incidents)                 | 365
+| SecurityIncident (Microsoft Sentinel Incidents)       | 365
 | AzureNetworkAnalytics_CL (NSG Malicious Inbound Flow) | 2444
 
-## Attack Maps After Hardening / Security Controls
 
-```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.```
+</br>
+
 
 ## Metrics After Hardening / Security Controls
 
@@ -167,18 +174,47 @@ Start Time 2023-07-23 02:21:53 Z
 
 Stop Time	2023-07-23 02:21:53 Z
 
-| Metric                   | Count
-| ------------------------ | -----
-| SecurityEvent            | 8019
-| Syslog                   | 8
-| SecurityAlert            | 0
-| SecurityIncident         | 0
-| AzureNetworkAnalytics_CL | 0
+| Metric                                                | Count
+| ------------------------------------------------------| -----
+| SecurityEvent (Windows VM)                            | 8019
+| Syslog (Ubuntu VM)                                    | 8
+| SecurityAlert (Microsoft Defender for Cloud)          | 0
+| SecurityIncident (Microsoft Sentinel Incidents)       | 0
+| AzureNetworkAnalytics_CL (NSG Malicious Inbound Flow) | 0
+
+
+</br>
+
+## Reduction of Overall Security Logs After Hardening / Security Controls 
+
+| Metric                                                | Percentage Reduced
+| ------------------------------------------------------| ------------------
+| SecurityEvent (Windows VM)                            | -77.90%
+| Syslog (Ubuntu VM)                                    | -99.95%
+| SecurityAlert (Microsoft Defender for Cloud)          | -100.00%
+| SecurityIncident (Microsoft Sentinel Incidents)       | -100.00%
+| AzureNetworkAnalytics_CL (NSG Malicious Inbound Flow) | -100.00%
+
+</br>
+
+
+## Azure Secure Score Before Hardening / Security Controls
+<img width="334" alt="securescore2" src="https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/205fac34-ad94-468e-a84e-c3a1ac5d4c80">
+
+</br>
+
+## Azure Secure Score After Hardening / Security Controls
+
+<img width="346" alt="securescore1" src="https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/84637ed2-ce4f-410c-be29-0f29a96f0f0c">
+
+
+</br>
 
 ## Conclusion
 
-In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. It is noteworthy that the number of security events and incidents were drastically reduced after the security controls were applied, demonstrating their effectiveness.
+While learning how Microsoft's Azure Cloud models operate, I built a small Honey Net and SOC environment to capture the logs that were generated and integrated into a Log Analytics workspace. Using Microsoft Sentinel, incidents were triaged and investigated, and controls were implemented based on NIST 800-53 R5 SC-7. Log metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures.
 
-It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
+Implementing security controls solely based on Boundary Protection (SC-7 of NIST 800-53) improved the overall network security posture by 27% according to Microsoft Defender for Cloud’s Secure score (54% increased to 81%). Our tables that show before and after security events with drastic reductions demonstrate how effective these network controls are in securing an environment.
 
-![147203-dark-simple-background-texture-digital-art-blue-green-abstract](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/c140ff7f-c7e9-472f-b78c-4c69aef191de)
+It’s important to state that in a real life enterprise network environment with much more factors to consider, it’s likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
+
