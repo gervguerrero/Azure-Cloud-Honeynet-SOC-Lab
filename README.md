@@ -3,9 +3,11 @@
 ![final map](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/cd438962-f370-40f5-9a5d-2a8034c579de)
 
 
+
 ## Introduction/Goals
 
 This project involves creating an exposed Honeynet in the Microsoft Azure Cloud to observe how real cyber threat actors attempt to break into vulnerable networks on a continuous basis. Upon observation of the attacks, we will practice the incident response process with NIST 800-61 and implement security controls with NIST 800-53 by using the security tools available in Microsoft Azure. The end goal is to effectively emulate a security incident response action plan from a SOC perspective in a cloud environment.  
+
 
 
 ## Observation Methods
@@ -21,6 +23,7 @@ The Azure Honeynet was unprotected for 24 hours to observe the cyber attacks in 
 - AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet)
 
 Microsoft Sentinel will utilize these logs ingested in the analytical workspace to construct a heat map from the geographical sources of the attacks, create alerts, and advertise incidents to our defenders.
+
 
 
 ## Tools & Technologies Used 
@@ -61,6 +64,8 @@ Microsoft Sentinel will utilize these logs ingested in the analytical workspace 
 
 **Route Tables**
 
+
+
 ## Architecture Before Hardening & Security Controls
 ![Unsecured Network](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/768fa3df-0c0e-4062-8369-3223d4336e0b)
 
@@ -82,24 +87,24 @@ No Azure firewall was configured for the network, a Network Service Group (NSG) 
 
 To see a detailed process on following the Incident Response Process using Microsoft Sentinel covering NIST 800-61 (Incident Management Lifecycle) for this project, Click Here (PLACEHOLDER)
 
+
+
 ## Architecture After Hardening / Security Controls
 ![Secured Network Azure firewall](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/c9fea765-11bc-48af-a9ac-36a0e9c6b6d7)
 
+During the Containment, Eradication and Recovery Phase of the incident lifecycle, I hardened the network by implementing security controls focused on NIST 800 53 R5 SC-7 Boundary Protection. 
 
+- **Azure Firewall** - I configured and set an Azure Firewall to set only authorized IP addresses to remote into the Virtual Machines and only configured certain website traffic to be allowed. All other traffic is denied by default with Azure firewalls.  A default route and separate Azure subnet was created to route all internal traffic directly through the firewall, and all external traffic must be filtered through the firewall before going internal to the assets.
 
-The architecture of the mini honeynet in Azure consists of the following components:
+- **Virtual Network Network Service Group (NSG)** - I configured a Network Service Group spanning the entire virtual network to only accept inbound traffic from authorized IP addresses. 
 
-- Virtual Network (VNet)
-- Network Security Group (NSG)
-- Virtual Machines (2 windows, 1 linux)
-- Log Analytics Workspace
-- Azure Key Vault
-- Azure Storage Account
-- Microsoft Sentinel
+- **Virtual Machine Network Service Group (NSG)** - I configured a Network Service Group specific to each Virtual Machine (Windows & Ubuntu) to only accept inbound traffic from authorized IP addresses. 
 
-For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet; aka, no use for Private Endpoints.
+- **Operating System Firewalls** - I configured each VM’s respective Operating System Firewall to only accept inbound remote logins from authorized IP addresses.
 
-For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
+Windows 10: Windows Firewall 
+
+Ubuntu: UFW Firewall 
 
 ## Attack Maps Before Hardening / Security Controls
 ![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
