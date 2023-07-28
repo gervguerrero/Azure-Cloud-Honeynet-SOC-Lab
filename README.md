@@ -64,9 +64,27 @@ Microsoft Sentinel will utilize these logs ingested in the analytical workspace 
 ## Architecture Before Hardening & Security Controls
 ![Unsecured Network](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/768fa3df-0c0e-4062-8369-3223d4336e0b)
 
+To allow attacks into the network for observation, the azure virtual network was left unprotected at multiple levels.  All Azure assets were public facing to the internet and were available directly to cyber threat actors. 
+
+Our Assets include:
+- Windows 10 Server hosting SQL Database
+- Ubuntu  20.04.6 Server
+- Azure Key Vault
+- Azure Blob Storage (Storage Account)
+
+No Azure firewall was configured for the network, a Network Service Group (NSG) covering the network with our assets was left open to any traffic, both the Windows & Ubuntu virtual machines had NSGs open to any traffic, and lastly the respective firewalls for each asset were disabled. The operating system firewalls for Windows and Ubuntu were not configured, and the network rule settings for our Blob Storage and Key Vault were available to be viewed from any public space, without the security tool Azure Private Endpoints configured.
+
+**Threat:**  Malicious Cyber Actors Online
+
+**Vulnerability:**  No Firewalls or Networks Service Groups configured 
+
+**Risk:**  Remote Login available to threat actors brute forcing into publicly exposed Virtual Machines, and public access/viewing of our Blob Storage and Key Vault.  
+
+To see a detailed process on following the Incident Response Process using Microsoft Sentinel covering NIST 800-61 (Incident Management Lifecycle) for this project, Click Here (PLACEHOLDER)
 
 ## Architecture After Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
+![Secured Network Asset Firewall](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/80e529bd-5cad-45c4-80c6-2d5eb3002fef)
+
 
 The architecture of the mini honeynet in Azure consists of the following components:
 
