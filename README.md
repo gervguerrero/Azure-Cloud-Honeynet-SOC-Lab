@@ -1,10 +1,18 @@
 # Azure-Cloud-SOC-Lab + Honeynet 
 
-![Cloud Honeynet / SOC](https://i.imgur.com/ZWxe03e.jpg)
+![final map](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/cd438962-f370-40f5-9a5d-2a8034c579de)
 
-## Introduction
 
-In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show are:
+## Introduction/Goals
+
+This project involves creating an exposed Honeynet in the Microsoft Azure Cloud to observe how real cyber threat actors attempt to break into vulnerable networks on a continuous basis. Upon observation of the attacks, we will practice the incident response process with NIST 800-61 and implement security controls with NIST 800-53 by using the security tools available in Microsoft Azure. The end goal is to effectively emulate a security incident response action plan from a SOC perspective in a cloud environment.  
+
+
+## Observation Methods
+
+The log analytics workspace imports a wide variety of security logs from our assets in  Azure. Any anomalies or security events are logged from our endpoints and imported into our log analytical workspace for querying.
+
+The Azure Honeynet was unprotected for 24 hours to observe the cyber attacks in certain metrics with the logs ingested. Security controls were then implemented to harden the environment, and after another 24 hours the logs were measured again. The metrics measured by logs are:
 
 - SecurityEvent (Windows Event Logs)
 - Syslog (Linux Event Logs)
@@ -12,8 +20,50 @@ In this project, I build a mini honeynet in Azure and ingest log sources from va
 - SecurityIncident (Incidents created by Sentinel)
 - AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet)
 
-## Architecture Before Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
+Microsoft Sentinel will utilize these logs ingested in the analytical workspace to construct a heat map from the geographical sources of the attacks, create alerts, and advertise incidents to our defenders.
+
+
+## Tools & Technologies Used 
+
+**Virtual Machines**
+- Windows 10 (Attack VM) 
+- Windows 10 with SQL Database (Victim VM) 
+- Ubuntu 20.04.6 (Victim VM)
+
+**Key Vaults**
+
+**Storage Accounts**
+
+**Azure Active Directory**
+
+**Log Analytics Workspace**
+
+- SecurityEvent (Windows Event Logs)
+- Syslog (Linux Event Logs)
+- SecurityAlert (Log Analytics Alerts Triggered)
+- SecurityIncident (Incidents created by Sentinel)
+- AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet) 
+
+
+
+
+**Microsoft Sentinel**
+
+**Microsoft Defender for Cloud**
+
+**Virtual Networks**
+
+**Network Security Groups**
+
+**Network Watcher**
+
+**Azure Firewalls**
+
+**Route Tables**
+
+## Architecture Before Hardening & Security Controls
+![Unsecured Network](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/768fa3df-0c0e-4062-8369-3223d4336e0b)
+
 
 ## Architecture After Hardening / Security Controls
 ![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
@@ -74,3 +124,5 @@ Stop Time	2023-03-19 15:37
 In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. It is noteworthy that the number of security events and incidents were drastically reduced after the security controls were applied, demonstrating their effectiveness.
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
+
+![147203-dark-simple-background-texture-digital-art-blue-green-abstract](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/c140ff7f-c7e9-472f-b78c-4c69aef191de)
