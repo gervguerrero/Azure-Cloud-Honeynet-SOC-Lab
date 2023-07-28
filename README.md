@@ -83,7 +83,8 @@ No Azure firewall was configured for the network, a Network Service Group (NSG) 
 To see a detailed process on following the Incident Response Process using Microsoft Sentinel covering NIST 800-61 (Incident Management Lifecycle) for this project, Click Here (PLACEHOLDER)
 
 ## Architecture After Hardening / Security Controls
-![Secured Network Asset Firewall](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/80e529bd-5cad-45c4-80c6-2d5eb3002fef)
+![Secured Network Azure firewall](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/c9fea765-11bc-48af-a9ac-36a0e9c6b6d7)
+
 
 
 The architecture of the mini honeynet in Azure consists of the following components:
