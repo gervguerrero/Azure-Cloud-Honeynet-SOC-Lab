@@ -109,7 +109,7 @@ During the Containment, Eradication and Recovery Phase of the incident lifecycle
 
 - **Private Endpoints** - I configured public access to disabled for Azure Key Vault and Blob Storage. Private endpoint access was configured to only allow access to these resources from within the virtual network, and deny access from public IP space.
 
-To see a detailed process on how I secured the network using Firewalls Click Here: (PLACEHOLDER)
+To see a detailed process on how I secured the network using 5 layers of boundary protection, click here: (PLACEHOLDER)
 
 </br>
 </br>
