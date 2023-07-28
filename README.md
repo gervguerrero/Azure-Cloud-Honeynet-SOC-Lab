@@ -66,7 +66,7 @@ Microsoft Sentinel will utilize these logs ingested in the analytical workspace 
 
 
 
-## Architecture Before Hardening & Security Controls
+## Architecture Before Hardening / Security Controls
 ![Unsecured Network](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/768fa3df-0c0e-4062-8369-3223d4336e0b)
 
 To allow attacks into the network for observation, the azure virtual network was left unprotected at multiple levels.  All Azure assets were public facing to the internet and were available directly to cyber threat actors. 
@@ -112,38 +112,65 @@ During the Containment, Eradication and Recovery Phase of the incident lifecycle
 
 
 ## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
-![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
-![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
+
+<img width="720" alt="windowsrdp before" src="https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/0567b69e-8f38-4811-9815-07afa9a5e823">
+
+This map above shows the attempts to login to the Windows 10 virtual machine through either RDP, SMB, or other native Windows login methods and where they originate from. (Measured by Windows Security Event Logs)
+
+
+
+![image](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/cd9e7f99-a016-48c7-9b1e-a1cb64a9f764)
+
+This map above shows the attempts to login to the Ubuntu virtual machine through SSH and where they originate from. (Measured by Syslog Logs)
+
+
+
+<img width="732" alt="SQL before" src="https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/0f82527b-f978-45b1-89ad-394dbca90c57">
+
+This map above shows the attempts to login to the SQL database application in the Windows 10 virtual machine and where they originate from. (Measured by Failed logins to SQL in Application logs in Windows event logs.) 
+
+
+
+<img width="727" alt="NSGmaliciousbefore" src="https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/cfc53ae3-ef64-4b4e-b00f-137043665f27">
+
+This map above shows the malicious network traffic flow passing our Open Network Security Group Rules (NSG)  and where they originate from. (Measured by AzureNetworkAnalytics_CL logs.)
+
+
+
+
 
 ## Metrics Before Hardening / Security Controls
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-03-15 17:04:29
-Stop Time 2023-03-16 17:04:29
 
-| Metric                   | Count
-| ------------------------ | -----
-| SecurityEvent            | 19470
-| Syslog                   | 3028
-| SecurityAlert            | 10
-| SecurityIncident         | 348
-| AzureNetworkAnalytics_CL | 843
+Start Time 2023-07-19 19:39:01 Z
 
-## Attack Maps Before Hardening / Security Controls
+Stop Time 2023-07-20 19:39:01 Z
+
+| Metric                                                | Count
+| ------------------------------------------------------| -----
+| SecurityEvent (Windows VM)                            | 36291
+| Syslog (Ubuntu VM)                                    | 16973
+| SecurityAlert (Microsoft Defender for Cloud)          | 12
+| SecurityIncident (Sentinel Incidents)                 | 365
+| AzureNetworkAnalytics_CL (NSG Malicious Inbound Flow) | 2444
+
+## Attack Maps After Hardening / Security Controls
 
 ```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.```
 
 ## Metrics After Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-03-18 15:37
-Stop Time	2023-03-19 15:37
+
+Start Time 2023-07-23 02:21:53 Z
+
+Stop Time	2023-07-23 02:21:53 Z
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 8778
-| Syslog                   | 25
+| SecurityEvent            | 8019
+| Syslog                   | 8
 | SecurityAlert            | 0
 | SecurityIncident         | 0
 | AzureNetworkAnalytics_CL | 0
