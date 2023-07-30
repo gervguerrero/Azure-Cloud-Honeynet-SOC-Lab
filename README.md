@@ -85,7 +85,7 @@ No Azure firewall was configured for the network, a Network Service Group (NSG) 
 
 **Risk:**  Remote Login available to threat actors brute forcing into publicly exposed Virtual Machines, and public access/viewing of our Blob Storage and Key Vault.  
 
-To see a detailed process on following the Incident Response Process using Microsoft Sentinel covering NIST 800-61 (Incident Management Lifecycle) for this project, Click Here (PLACEHOLDER)
+To see a detailed process on following the Incident Response Process using Microsoft Sentinel covering NIST 800-61 (Incident Management Lifecycle) for this project, Click Here [Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation)
 
 </br>
 
