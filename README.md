@@ -1,4 +1,4 @@
-# Azure-Cloud-SOC-Lab + Honeynet 
+# ☁️ Azure-Cloud-SOC-Lab + Honeynet 🍯 
 
 ![final map](https://github.com/gervguerrero/Azure-Cloud-SOC-Lab/assets/140366635/cd438962-f370-40f5-9a5d-2a8034c579de)
 
