@@ -85,7 +85,9 @@ No Azure firewall was configured for the network, a Network Service Group (NSG) 
 
 **Risk:**  Remote Login available to threat actors brute forcing into publicly exposed Virtual Machines, and public access/viewing of our Blob Storage and Key Vault.  
 
-To see a detailed process on following the Incident Response Process using Microsoft Sentinel covering NIST 800-61 (Incident Management Lifecycle) for this project, Click Here [Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation)
+**To see a detailed process on following the Incident Response Process using Microsoft Sentinel covering NIST 800-61 (Incident Management Lifecycle) for this project, click here:** 
+
+[Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation)
 
 </br>
 
@@ -109,7 +111,10 @@ During the Containment, Eradication and Recovery Phase of the incident lifecycle
 
 - **Private Endpoints** - I configured public access to disabled for Azure Key Vault and Blob Storage. Private endpoint access was configured to only allow access to these resources from within the virtual network, and deny access from public IP space.
 
-To see a detailed process on how I secured the network using 5 layers of boundary protection, click here: (PLACEHOLDER)
+**To see a detailed process on how I secured the network using 5 layers of boundary protection, click here:** 
+
+[Azure-Cloud-SOC-Lab-Incident-Response-Investigation](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation/edit/main/README.md)
+
 
 </br>
 </br>
