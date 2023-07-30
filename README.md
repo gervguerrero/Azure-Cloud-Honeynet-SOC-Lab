@@ -113,7 +113,7 @@ During the Containment, Eradication and Recovery Phase of the incident lifecycle
 
 **To see a detailed process on how I secured the network using 5 layers of boundary protection, click here:** 
 
-[Azure-Cloud-SOC-Lab-Incident-Response-Investigation](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Incident-Response-Investigation/edit/main/README.md)
+[Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening](https://github.com/gervguerrero/Azure-Cloud-Honeynet-SOC-Lab-Firewall-Hardening)
 
 
 </br>
